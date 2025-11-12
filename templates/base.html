@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Quiz Tracker</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        a { margin-right: 10px; }
+        table { border-collapse: collapse; margin-top: 20px; width: 80%; }
+        th, td { border: 1px solid #ccc; padding: 8px; }
+        th { background-color: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>Student Quiz Tracker</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/students">Students</a>
+        <a href="/quizzes">Quizzes</a>
+        <a href="/results">Results</a>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>

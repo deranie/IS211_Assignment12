@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Add Student</h2>
+
+<form action="/add_student" method="post">
+    <input type="text" name="first_name" placeholder="First name" required>
+    <input type="text" name="last_name" placeholder="Last name" required>
+    <button type="submit">Add Student</button>
+</form>
+
+<h3>Current Students</h3>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Action</th>
+    </tr>
+    {% for s in students %}
+    <tr>
+        <td>{{ s.id }}</td>
+        <td>{{ s.first_name }}</td>
+        <td>{{ s.last_name }}</td>
+        <td>
+            <a href="/delete_student/{{ s.id }}" 
+               onclick="return confirm('Are you sure you want to delete {{ s.first_name }} {{ s.last_name }}?');">
+                Delete
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% if not students %}
+<p><em>No students added yet.</em></p>
+{% endif %}
+
+{% endblock %}

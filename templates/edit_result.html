@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Result</h2>
+
+<form method="POST" action="/edit_result/{{ result.id }}">
+    <p><b>Student:</b> {{ result.first_name }} {{ result.last_name }}</p>
+    <p><b>Quiz:</b> {{ result.subject }}</p>
+    <p><b>Current Score:</b> {{ result.score }}</p>
+    <p>New Score: <input type="number" step="0.01" name="score" required></p>
+    <button type="submit">Update</button>
+</form>
+
+<a href="/results">Back to Results</a>
+{% endblock %}

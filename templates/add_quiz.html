@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Add Quiz</h2>
+
+<form action="/add_quiz" method="post">
+    <input type="text" name="subject" placeholder="Subject" required>
+    <input type="number" name="num_questions" placeholder="Number of Questions" min="1" required>
+    <input type="date" name="quiz_date" required>
+    <button type="submit">Add Quiz</button>
+</form>
+
+<h3>Current Quizzes</h3>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <th>ID</th>
+        <th>Subject</th>
+        <th>Questions</th>
+        <th>Date</th>
+        <th>Action</th>
+    </tr>
+    {% for q in quizzes %}
+    <tr>
+        <td>{{ q.id }}</td>
+        <td>{{ q.subject }}</td>
+        <td>{{ q.num_questions }}</td>
+        <td>{{ q.quiz_date }}</td>
+        <td>
+            <a href="/delete_quiz/{{ q.id }}" 
+               onclick="return confirm('Are you sure you want to delete the quiz on {{ q.subject }}?');">
+                Delete
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% if not quizzes %}
+<p><em>No quizzes available yet.</em></p>
+{% endif %}
+
+{% endblock %}
